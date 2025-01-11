@@ -1,0 +1,47 @@
+package com.example.demo.service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.Booking;
+import com.example.demo.model.Property;
+import com.example.demo.repo.BookingRepo;
+import com.example.demo.repo.PropertyRepo;
+
+@Service
+public class BookingService {
+	
+	@Autowired
+	private PropertyRepo propertyRepo;
+	
+	@Autowired
+	private BookingRepo bookingRepo;
+	
+	public Booking createBooking(Long id,LocalDate startDate,LocalDate endDate) {
+		Property property =propertyRepo.findById(id).
+				orElseThrow(()->new RuntimeException("Property Not Found"));
+		Booking booking = new Booking();
+		booking.setProperty(property);
+		booking.setStartdate(startDate);
+		booking.setEnddate(endDate);
+		
+		return bookingRepo.save(booking);
+	}
+	
+	public List<Booking> getAllBookings(){
+		return bookingRepo.findAll();
+	}
+	
+	public List<Booking> getBookingByProperty(Long propertyId){
+		return bookingRepo.findByPropertyId(propertyId);
+		
+	}
+	
+	public void deleteBooking(Long id) {
+		 bookingRepo.deleteById(id);
+	}
+
+}

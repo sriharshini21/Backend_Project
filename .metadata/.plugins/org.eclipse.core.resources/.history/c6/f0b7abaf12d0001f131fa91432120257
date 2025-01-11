@@ -1,0 +1,31 @@
+package com.example.demo.service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.Train;
+import com.example.demo.repo.TrainRepo;
+
+@Service
+public class TrainService {
+
+	@Autowired
+	private TrainRepo trainRepo;
+	
+	public Train createTrainBooking(String trainNumber, LocalDate travelDate, String fromStation, String toStation) {
+        Train trainBooking = new Train();
+        trainBooking.setTrainNumber(trainNumber);
+        trainBooking.setTravelDate(travelDate);
+        trainBooking.setFromStation(fromStation);
+        trainBooking.setToStation(toStation);
+        return trainRepo.save(trainBooking);
+    }
+    
+    public List<Train> getAllTrainBookings() {
+        return trainRepo.findAll();
+    }
+}
+}

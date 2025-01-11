@@ -1,0 +1,42 @@
+//package com.example.demo.controller;
+//
+//import java.time.LocalDate;
+//import java.util.List;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RestController;
+//
+//import com.example.demo.model.Train;
+//import com.example.demo.service.TrainService;
+//
+//@RestController
+//@RequestMapping("/api/trains")
+//public class TrainController {
+//	
+//	    @Autowired
+//	    private TrainService trainBookingService;
+//
+//	    // Endpoint to create a new train booking
+//	    @PostMapping("/{id}/booking")
+//	    public Train createBooking(@PathVariable Long id, @RequestParam LocalDate travelDate, 
+//	                                      @RequestParam String fromStation, @RequestParam String toStation) {
+//	        return trainBookingService.createTrainBooking(id, travelDate, fromStation, toStation);
+//	    }
+//
+//	    // Endpoint to get a specific train booking by ID
+//	    @GetMapping("/{id}/booking")
+//	    public Train getBooking(@PathVariable Long id) {
+//	        return trainBookingService.getTrainBookingById(id);
+//	    }
+//
+//	    // Additional endpoint for fetching all train bookings (optional)
+//	    @GetMapping("/bookings")
+//	    public List<Train> getAllBookings() {
+//	        return trainBookingService.getAllTrainBookings();
+//	    }
+//}

@@ -1,0 +1,32 @@
+//package com.example.demo.service;
+//
+//import java.time.LocalDate;
+//import java.util.List;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//
+//import com.example.demo.model.Flight;
+//import com.example.demo.repo.FlightRepo;
+//
+//@Service
+//public class FlightService {
+//@Autowired
+//private FlightRepo flightRepo;
+//public Flight createFlightBooking(Long id, LocalDate travelDate, String fromAirport, String toAirport) {
+//    Flight flightBooking = new Flight();
+//    flightBooking.setTravelDate(travelDate);
+//    flightBooking.setFromAirport(fromAirport);
+//    flightBooking.setToAirport(toAirport);
+//    return flightRepo.save(flight	Booking);
+//}
+//
+//public Flight getFlightBookingById(Long id) {
+//    return flightRepo.findById(id)
+//            .orElseThrow(() -> new RuntimeException("Flight booking not found"));
+//}
+//
+//public List<Flight> getAllFlightBookings() {
+//    return flightRepo.findAll();
+//}
+//}
