@@ -1,0 +1,67 @@
+package com.example.demo.controller;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Flight;
+import com.example.demo.model.FlightBooking;
+import com.example.demo.service.FlightBookingService;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping("/api/flights")
+public class FlightBookingController {
+
+    @Autowired
+    private FlightBookingService flightBookingService;
+
+    @PostMapping
+    public FlightBooking createBooking(@RequestParam Long flightId, @RequestParam LocalDate departureDate, @RequestParam LocalDate returnDate) {
+        return flightBookingService.createFlightBooking(flightId, departureDate, returnDate);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Flight> getFlightById(@PathVariable Long id) {
+        Flight flight = flightBookingService.getFlightById(id);
+        if (flight != null) {
+            return ResponseEntity.ok(flight);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+    
+    @Autowired
+    private FlightBookingService flightService;
+
+    // Endpoint to get all flights
+    @GetMapping
+    public List<Flight> getAllFlights() {
+        return flightService.getAllFlights();
+    }
+
+    @GetMapping
+    public List<FlightBooking> getAllBookings() {
+        return flightBookingService.getAllBookings();
+    }
+
+    @GetMapping("/flight/{flightId}")
+    public List<FlightBooking> getBookingsByFlight(@PathVariable Long flightId) {
+        return flightBookingService.getBookingsByFlight(flightId);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBooking(@PathVariable Long id) {
+        flightBookingService.deleteBooking(id);
+    }
+}
