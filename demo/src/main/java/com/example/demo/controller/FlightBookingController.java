@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.Flight;
 import com.example.demo.model.FlightBooking;
 import com.example.demo.service.FlightBookingService;
-
+	
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api/flights")

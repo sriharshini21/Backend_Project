@@ -31,7 +31,7 @@ public class SecurityConfig {
             .and()
             .authorizeHttpRequests(auth -> auth
                 // Allow public access to specific endpoints like login, register, home, etc.
-                .requestMatchers("/api/users/login", "/api/users/register", "/home","/api/properties/","/api/bookings","/api/flights").permitAll()
+                .requestMatchers("/api/users/login", "/api/users/register", "/home","/api/properties/","/api/bookings","/api/flights","/api/buses").permitAll()
                 // Require authentication for other API endpoints
                 .requestMatchers("/api/**").authenticated()
             )
