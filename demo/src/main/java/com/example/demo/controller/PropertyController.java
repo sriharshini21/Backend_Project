@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.example.demo.model.Property;
 import com.example.demo.service.PropertyService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api/properties")
 public class PropertyController {
 	
@@ -34,7 +36,7 @@ public class PropertyController {
 		return ResponseEntity.ok(property);
 	}
 	
-	   @GetMapping // Ensure this is present
+	   @GetMapping 
 	    public ResponseEntity<List<Property>> getAllProperties() { 
 	        List<Property> properties = propertyService.getAllProperties();
 	        return new ResponseEntity<>(properties, HttpStatus.OK);
